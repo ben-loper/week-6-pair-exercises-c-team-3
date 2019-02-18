@@ -1,0 +1,7 @@
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\bin\Debug\ProjectDB.exe.config
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\bin\Debug\ProjectDB.exe
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\bin\Debug\ProjectDB.pdb
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\obj\Debug\ProjectDB.csprojAssemblyReference.cache
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\obj\Debug\ProjectDB.csproj.CoreCompileInputs.cache
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\obj\Debug\ProjectDB.exe
+C:\workspace\Team\week-6-pair-exercises-c-team-3\06_Database_Connectivity_DAO\pair-exercise\dotnet\ProjectDB\obj\Debug\ProjectDB.pdb

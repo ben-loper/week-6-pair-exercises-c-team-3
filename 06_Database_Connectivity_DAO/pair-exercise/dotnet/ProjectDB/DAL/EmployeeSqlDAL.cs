@@ -1,6 +1,7 @@
 ﻿using ProjectDB.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace ProjectDB.DAL
     public class EmployeeSqlDAL
     {
         private string connectionString;
+        private const string _getLastIdSQL = "SELECT CAST(SCOPE_IDENTITY() as int);";
+
 
         // Single Parameter Constructor
         public EmployeeSqlDAL(string dbConnectionString)
@@ -23,7 +26,40 @@ namespace ProjectDB.DAL
         /// <returns>A list of all employees.</returns>
         public IList<Employee> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            string SQLGetEmployeesNames = " Select * From employee";
+            List<Employee> result = new List<Employee>();
+
+            try
+
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQLGetEmployeesNames, connection);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Employee employee = new Employee();
+
+                        employee.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        employee.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        employee.FirstName = Convert.ToString(reader["first_name"]);
+                        employee.LastName = Convert.ToString(reader["last_name"]);
+                        employee.JobTitle = Convert.ToString(reader["job_title"]);
+                        employee.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        employee.Gender = Convert.ToString(reader["gender"]);
+                        employee.HireDate = Convert.ToDateTime(reader["hire_date"]);
+                        
+                        result.Add(employee);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { }
+            return result;
         }
 
         /// <summary>
@@ -32,10 +68,44 @@ namespace ProjectDB.DAL
         /// <remarks>The search performed is a wildcard search.</remarks>
         /// <param name="firstname"></param>
         /// <param name="lastname"></param>
-        /// <returns>A list of employees that match the search.</returns>
+        /// <returns>A list of employees that match the search.</returns> 
         public IList<Employee> Search(string firstname, string lastname)
         {
-            throw new NotImplementedException();
+            string SQLSearchEmployeesNames = " Select * From employee WHERE First_Name Like @firstname AND Last_Name like @lastname";
+            List<Employee> result = new List<Employee>();
+
+            try
+
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQLSearchEmployeesNames, connection);
+                    cmd.Parameters.AddWithValue("@firstname", "%" + firstname + "%");
+                    cmd.Parameters.AddWithValue("@lastname", "%" + lastname + "%");
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Employee employee = new Employee();
+
+                        employee.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        employee.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        employee.FirstName = Convert.ToString(reader["first_name"]);
+                        employee.LastName = Convert.ToString(reader["last_name"]);
+                        employee.JobTitle = Convert.ToString(reader["job_title"]);
+                        employee.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        employee.Gender = Convert.ToString(reader["gender"]);
+                        employee.HireDate = Convert.ToDateTime(reader["hire_date"]);
+
+                        result.Add(employee);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { }
+            return result;
         }
 
         /// <summary>
@@ -44,7 +114,45 @@ namespace ProjectDB.DAL
         /// <returns></returns>
         public IList<Employee> GetEmployeesWithoutProjects()
         {
-            throw new NotImplementedException();
+            string SQLSearchEmployeesWithoutProjects = @"  SELECT *
+                                                            FROM employee
+                                                            LEFT JOIN project_employee ON employee.employee_id = project_employee.employee_id
+                                                            JOIN project ON project_employee.project_id = project.project_id
+                                                            WHERE project_employee.project_id IS NULL OR GETDATE() < project.to_date; ";
+
+            List<Employee> result = new List<Employee>();
+
+            try
+
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQLSearchEmployeesWithoutProjects, connection);
+                    
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Employee employee = new Employee();
+
+                        employee.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        employee.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        employee.FirstName = Convert.ToString(reader["first_name"]);
+                        employee.LastName = Convert.ToString(reader["last_name"]);
+                        employee.JobTitle = Convert.ToString(reader["job_title"]);
+                        employee.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        employee.Gender = Convert.ToString(reader["gender"]);
+                        employee.HireDate = Convert.ToDateTime(reader["hire_date"]);
+
+                        result.Add(employee);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { }
+            return result;
         }
     }
 }
