@@ -114,11 +114,14 @@ namespace ProjectDB.DAL
         /// <returns></returns>
         public IList<Employee> GetEmployeesWithoutProjects()
         {
-            string SQLSearchEmployeesWithoutProjects = @"  SELECT *
-                                                            FROM employee
-                                                            LEFT JOIN project_employee ON employee.employee_id = project_employee.employee_id
-                                                            JOIN project ON project_employee.project_id = project.project_id
-                                                            WHERE project_employee.project_id IS NULL OR GETDATE() < project.to_date; ";
+            string SQLSearchEmployeesWithoutProjects = @" SELECT *
+                                                        FROM employee
+                                                        WHERE employee.employee_id NOT IN ( 
+                                                            SELECT project_employee.employee_id
+									                        FROM project_employee
+									                        JOIN project ON project_employee.project_id = project.project_id
+									                        WHERE CURRENT_TIMESTAMP BETWEEN project.from_date AND project.to_date
+									                        ) ";
 
             List<Employee> result = new List<Employee>();
 
