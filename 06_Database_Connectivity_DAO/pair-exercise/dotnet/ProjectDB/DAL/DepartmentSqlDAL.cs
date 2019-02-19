@@ -55,6 +55,45 @@ namespace ProjectDB.DAL
             return result;
         }
 
+        public Department GetSinlgeDepartment(int id)
+        {
+            string SQLGetDepartmentNames = "Select * From Department WHERE department.department_id = @departmentId";
+
+            Department result = new Department();
+
+            try
+
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQLGetDepartmentNames, connection);
+
+                    cmd.Parameters.AddWithValue("@departmentId", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string name = Convert.ToString(reader["name"]);
+                        //int id = Convert.ToInt32(reader["department_id"]);
+                        result.Name = name;
+                        result.Id = id;                        
+                    }
+
+                    if(result.Name == "" || result.Name == null)
+                    {
+                        Exception ex = new Exception();
+                        throw ex;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { }
+            return result;
+        }
+
         /// <summary>
         /// Creates a new department.
         /// </summary>
@@ -132,6 +171,46 @@ namespace ProjectDB.DAL
 
 
                 return result;
+        }
+
+        /// <summary>
+        /// Removes a deparment from the deparment table using the given deparment ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool RemoveDepartment(int id)
+        {
+            bool result = false;
+
+            string SQLCreateNewDepartment = $"DELETE FROM  department WHERE department_id = @deparmentId;";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(SQLCreateNewDepartment, connection);
+
+                    cmd.Parameters.AddWithValue("@deparmentId", id);
+
+                    int numRowsEffected = cmd.ExecuteNonQuery();
+                    if (numRowsEffected == 0)
+                    {
+                        result = false;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            { 
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
         }
 
     }

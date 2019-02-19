@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DepartmentSqlDALTests.cs" />
+    <Compile Include="EmployeeSqlDALTests.cs" />
+    <Compile Include="ProjectSqlDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
