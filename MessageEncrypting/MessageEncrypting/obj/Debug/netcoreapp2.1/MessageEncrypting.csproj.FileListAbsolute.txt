@@ -1,0 +1,9 @@
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\bin\Debug\netcoreapp2.1\MessageEncrypting.deps.json
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\bin\Debug\netcoreapp2.1\MessageEncrypting.dll
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\bin\Debug\netcoreapp2.1\MessageEncrypting.pdb
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.csprojAssemblyReference.cache
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.csproj.CoreCompileInputs.cache
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.AssemblyInfoInputs.cache
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.AssemblyInfo.cs
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.dll
+C:\workspace\team\week-6-pair-exercises-c-team-3\MessageEncrypting\MessageEncrypting\obj\Debug\netcoreapp2.1\MessageEncrypting.pdb
