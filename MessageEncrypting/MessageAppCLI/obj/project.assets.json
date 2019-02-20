@@ -363,9 +363,12 @@
       "MessageEncrypting/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
+<<<<<<< HEAD
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
+=======
+>>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
         "compile": {
           "bin/placeholder/MessageEncrypting.dll": {}
         },

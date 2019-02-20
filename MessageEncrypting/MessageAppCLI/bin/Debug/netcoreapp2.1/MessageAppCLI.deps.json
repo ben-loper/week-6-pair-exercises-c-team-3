@@ -1,20 +1,29 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
+<<<<<<< HEAD
     "signature": "3223610fa922146338bd7de0c0c5aee25b99bbbc"
+=======
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+>>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "MessageAppCLI/1.0.0": {
         "dependencies": {
+<<<<<<< HEAD
           "MessageEncrypting": "1.0.0",
           "System.Data.SqlClient": "4.6.0"
+=======
+          "MessageEncrypting": "1.0.0"
+>>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
         },
         "runtime": {
           "MessageAppCLI.dll": {}
         }
       },
+<<<<<<< HEAD
       "Microsoft.Win32.Registry/4.5.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.5.0",
@@ -147,6 +156,9 @@
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
+=======
+      "MessageEncrypting/1.0.0": {
+>>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
         "runtime": {
           "MessageEncrypting.dll": {}
         }
@@ -159,6 +171,7 @@
       "serviceable": false,
       "sha512": ""
     },
+<<<<<<< HEAD
     "Microsoft.Win32.Registry/4.5.0": {
       "type": "package",
       "serviceable": true,
@@ -229,6 +242,8 @@
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
+=======
+>>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
     "MessageEncrypting/1.0.0": {
       "type": "project",
       "serviceable": false,
