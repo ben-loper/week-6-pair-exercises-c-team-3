@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MessageAppCLI
 {
-    class MessageAppCLI
+    public class MessageAppCLI
     {
     }
 }

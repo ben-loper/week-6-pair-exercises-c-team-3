@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MessageEncrypting
 {
-    class User
+    public class User
     {
     }
 }
