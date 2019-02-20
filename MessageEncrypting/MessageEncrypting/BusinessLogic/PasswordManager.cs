@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MessageAppCLI
+namespace MessageEncrypting.BusinessLogic
 {
-    public class MessageAppCLI
+    class PasswordManager
     {
     }
 }

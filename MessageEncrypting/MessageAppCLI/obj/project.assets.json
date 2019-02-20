@@ -207,6 +207,19 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "MessageEncrypting/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "2.1.0"
+        },
+        "compile": {
+          "bin/placeholder/MessageEncrypting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MessageEncrypting.dll": {}
+        }
       }
     }
   },
@@ -680,10 +693,16 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "MessageEncrypting/1.0.0": {
+      "type": "project",
+      "path": "../MessageEncrypting/MessageEncrypting.csproj",
+      "msbuildProject": "../MessageEncrypting/MessageEncrypting.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "MessageEncrypting >= 1.0.0",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
@@ -716,7 +735,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj": {
+              "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
