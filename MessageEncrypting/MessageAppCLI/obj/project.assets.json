@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj",
-      "projectName": "MessageEncrypting",
-      "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj",
+      "projectUniqueName": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
+      "projectName": "MessageAppCLI",
+      "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
       "packagesPath": "C:\\Users\\tulloa\\.nuget\\packages\\",
-      "outputPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\obj\\",
+      "outputPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -729,6 +729,7 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
