@@ -2,7 +2,13 @@
 
 namespace MessageAppCLI
 {
-    public class Program
+    class Program
     {
+        static void Main(string[] args)
+        {
+            MessageAppCLI messageCli = new MessageAppCLI();
+
+            messageCli.Run();
+        }
     }
 }

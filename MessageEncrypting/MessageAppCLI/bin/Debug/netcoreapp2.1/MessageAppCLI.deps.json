@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "MessageAppCLI/1.0.0": {
+        "dependencies": {
+          "MessageEncrypting": "1.0.0"
+        },
+        "runtime": {
+          "MessageAppCLI.dll": {}
+        }
+      },
+      "MessageEncrypting/1.0.0": {
+        "runtime": {
+          "MessageEncrypting.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MessageAppCLI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessageEncrypting/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
