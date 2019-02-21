@@ -6,12 +6,12 @@ namespace Capstone.Models
 {
     public class Reservation
     {
-        public int Id { get; set; }
-        public int CampgroundId { get; set; }
-        public int SiteNum { get; set; }
-        public int SiteOccupancy { get; set; }
-        public bool Accessible { get; set; }
-        public int MaxRVLength { get; set; }
-        public bool Utilities { get; set; }
+        public int ReservationId { get; set; }
+        public int SiteId { get; set; }
+        public string Name { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public DateTime BookDate { get; set; }
+        
     }
 }
