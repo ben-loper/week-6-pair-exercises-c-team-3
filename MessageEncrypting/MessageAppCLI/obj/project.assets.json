@@ -363,12 +363,9 @@
       "MessageEncrypting/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
-<<<<<<< HEAD
         "dependencies": {
           "System.Data.SqlClient": "4.6.0"
         },
-=======
->>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
         "compile": {
           "bin/placeholder/MessageEncrypting.dll": {}
         },
@@ -1258,5 +1255,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\obj\\MessageAppCLI.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

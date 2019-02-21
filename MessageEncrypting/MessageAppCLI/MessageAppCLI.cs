@@ -7,7 +7,7 @@ using MessageEncrypting.BusinessLogic;
 namespace MessageAppCLI
 {
     public class MessageAppCLI
-<<<<<<< HEAD
+
     {
         private MessageApp _ma;
 
@@ -16,9 +16,6 @@ namespace MessageAppCLI
             _ma = ma;
         }
 
-=======
-    {        
->>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
 
         public void Run()
         {
@@ -52,7 +49,6 @@ namespace MessageAppCLI
         private void LoginMenu()
         {
             Console.Clear();
-<<<<<<< HEAD
             Console.WriteLine("Enter username: ");
             string username = Console.ReadLine();
             Console.WriteLine("Enter password: ");
@@ -69,15 +65,11 @@ namespace MessageAppCLI
                 Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
-=======
-            Console.Write("Hi");
-            Console.ReadKey();
->>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
+            
         }
 
         private void CreateUserMenu()
         {
-<<<<<<< HEAD
             bool isMatch = false;
             while (!isMatch)
             {
@@ -94,6 +86,7 @@ namespace MessageAppCLI
                     User user = new User();
                     user.Password = password;
                     user.UserName = username;
+                    user.ConfirmPassword = confirmPassword;
                     _ma.RegisterUser(user);
                     isMatch = true;
                 }
@@ -104,8 +97,6 @@ namespace MessageAppCLI
                 }
             }
 
-=======
->>>>>>> 6cc0262a320885b10bed05bb22d874a06313b014
 
         }
     }
