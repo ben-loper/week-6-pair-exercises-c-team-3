@@ -1194,23 +1194,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tulloa\\.nuget\\packages\\": {},
+    "C:\\Users\\bloper\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
+      "projectUniqueName": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
       "projectName": "MessageAppCLI",
-      "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
-      "packagesPath": "C:\\Users\\tulloa\\.nuget\\packages\\",
-      "outputPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\obj\\",
+      "projectPath": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\MessageAppCLI.csproj",
+      "packagesPath": "C:\\Users\\bloper\\.nuget\\packages\\",
+      "outputPath": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\tulloa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1223,8 +1223,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj": {
-              "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj"
+            "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj": {
+              "projectPath": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageEncrypting\\MessageEncrypting.csproj"
             }
           }
         }
@@ -1255,13 +1255,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\MessageEncrypting\\MessageAppCLI\\obj\\MessageAppCLI.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
