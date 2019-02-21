@@ -6,11 +6,12 @@ namespace Capstone.Models
 {
     public class Park
     {
-        int Id { get; set; }
-        int ParkId { get; set; }
-        string Name { get; set; }
-        int OpenFromMonth { get; set; }
-        int OpenToMonth { get; set; }
-        double DailyFee { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public DateTime EstablishDate { get; set; }
+        public int Area { get; set; }
+        public int AnnualVisitors { get; set; }
+        public string Description { get; set; }
     }
 }

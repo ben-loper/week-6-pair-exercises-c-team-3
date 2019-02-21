@@ -6,11 +6,11 @@ namespace Capstone.Models
 {
     public class Site
     {
-        int ReservationId { get; set; }
-        int SiteId { get; set; }
-        string Name { get; set; }
-        DateTime FromDate { get; set; }
-        DateTime ToDate { get; set; }
-        DateTime BookDate { get; set; }
+        public int ReservationId { get; set; }
+        public int SiteId { get; set; }
+        public string Name { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public DateTime BookDate { get; set; }
     }
 }
