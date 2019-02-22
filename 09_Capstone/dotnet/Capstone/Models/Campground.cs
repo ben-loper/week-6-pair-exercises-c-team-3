@@ -7,9 +7,9 @@ namespace Capstone.Models
     /// <summary>
     /// Campground class holds information about the campground and a couple derived properties for display.
     /// </summary>
-    public class Campground
+    public class Campground : BaseItem
     {
-        public int Id { get; }                 // The campground Id
+        
         public string Name { get; }            // The campground name
         public int OpenFromMonth { get; }      // The  month the campground opens
         public int OpenToMonth { get; }        // The month the campground closes
@@ -50,9 +50,9 @@ namespace Capstone.Models
             }
         }
 
-        public Campground(int id, string name, int openFromMonth, int openToMonth, decimal dailyFee)
+        public Campground(int id, string name, int openFromMonth, int openToMonth, decimal dailyFee): base(id)
         {
-            Id = id;
+            
             Name = name;
             OpenFromMonth = openFromMonth;
             OpenToMonth = openToMonth;

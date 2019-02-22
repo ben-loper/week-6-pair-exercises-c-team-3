@@ -7,9 +7,8 @@ namespace Capstone.Models
     /// <summary>
     /// Park class holds information about the park
     /// </summary>
-    public class Park
+    public class Park : BaseItem
     {
-        public int Id { get; }                         // The park Id
         public string Name { get; }                    // The park name
         public string Location { get; }                // The park location
         public DateTime EstablishDate { get; }         // The date the park was established
@@ -17,9 +16,8 @@ namespace Capstone.Models
         public int AnnualVisitors { get; }             // The number of annual visitors
         public string Description { get; }             // The description of the park
 
-        public Park(int id, string name, string location, DateTime establishDate, int area, int annualVisitors, string description)
+        public Park(int id, string name, string location, DateTime establishDate, int area, int annualVisitors, string description): base(id)
         {
-            Id = id;
             Name = name;
             Location = location;
             EstablishDate = establishDate;

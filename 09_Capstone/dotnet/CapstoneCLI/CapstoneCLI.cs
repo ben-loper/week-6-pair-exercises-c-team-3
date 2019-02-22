@@ -20,8 +20,27 @@ namespace Capstone
         public void Start()
         {
             bool quit = false;
+            try
+            {
+                _parks = _db.GetParks();
+            }
+            catch(Exception ex)
+            {
 
-            _parks = _db.GetParks();
+                Console.Clear();
+
+                Console.WriteLine(ex);
+
+                Console.WriteLine("Unexpected error when reading parks from database");
+
+                Console.WriteLine("Application will now close...");
+
+                Console.ReadKey();
+
+                quit = true;
+
+
+            }
 
             if(_parks.Count == 0)
             {
@@ -133,10 +152,23 @@ namespace Capstone
         private void ViewCampground(int parkId)
         {
             Dictionary<int, Campground> campgrounds = new Dictionary<int, Campground>();
-
-            campgrounds = _db.GetCampgroundByPark(parkId);
-
             bool quit = false;
+            try
+            {
+                campgrounds = _db.GetCampgroundByPark(parkId);
+            }
+            catch(Exception ex)
+            {
+                Console.Clear();
+                Console.WriteLine(ex);
+               
+                Console.WriteLine($"No campgrounds exist for {_parks[parkId].Name}");
+                Console.WriteLine("Press any key to return to previous screen...");
+                Console.ReadKey();
+                quit = true;
+            }
+
+           
 
             if(campgrounds.Count == 0)
             {

@@ -25,41 +25,47 @@ namespace Capstone.DAL
             Dictionary<int, Park> result = new Dictionary<int, Park>();
             string sqlGetParks = @"SELECT * FROM park
                                    ORDER BY park.name;";
-            // create my connection object
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            try
             {
-                // open connection
-                conn.Open();
-
-                // create my command object
-                SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
-
-
-                // execute command
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                // if applicable loop through result set
-                while (reader.Read())
+                // create my connection object
+                using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
-                    // populate object(s) to return
-                    int parkId = Convert.ToInt32(reader["park_id"]);
-                    string name = Convert.ToString(reader["name"]);
-                    string location = Convert.ToString(reader["location"]);
-                    DateTime establishDate = Convert.ToDateTime(reader["establish_date"]);
-                    int area = Convert.ToInt32(reader["area"]);
-                    int annualVisitors = Convert.ToInt32(reader["visitors"]);
-                    string descripton = Convert.ToString(reader["description"]);
+                    // open connection
+                    conn.Open();
 
-                    Park park = new Park(parkId, name, location, establishDate, area, annualVisitors, descripton);
+                    // create my command object
+                    SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
 
-                    result.Add(parkId, park);
+
+                    // execute command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // if applicable loop through result set
+                    while (reader.Read())
+                    {
+                        // populate object(s) to return
+                        int parkId = Convert.ToInt32(reader["park_id"]);
+                        string name = Convert.ToString(reader["name"]);
+                        string location = Convert.ToString(reader["location"]);
+                        DateTime establishDate = Convert.ToDateTime(reader["establish_date"]);
+                        int area = Convert.ToInt32(reader["area"]);
+                        int annualVisitors = Convert.ToInt32(reader["visitors"]);
+                        string descripton = Convert.ToString(reader["description"]);
+
+                        Park park = new Park(parkId, name, location, establishDate, area, annualVisitors, descripton);
+
+                        result.Add(parkId, park);
+                    }
+
+                    return result;
                 }
-                return result;
-
             }
-
+            catch
+            {
+                throw;
+            }
         }
-        
+
         /// <summary>
         /// Get the campgrounds and campground information in a given park from the database
         /// </summary>
@@ -70,42 +76,49 @@ namespace Capstone.DAL
             Dictionary<int, Campground> result = new Dictionary<int, Campground>();
             string sqlGetParks = @"SELECT * FROM campground
                                    WHERE campground.park_id = @parkId;";
-
-            // create my connection object
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            try
             {
-                // open connection
-                conn.Open();
-                
-                // create my command object
-                SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
-
-                cmd.Parameters.AddWithValue("@parkId", parkId);
-
-                // execute command
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                // if applicable loop through result set
-                while (reader.Read())
+                // create my connection object
+                using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
-                    // populate object(s) to return
-                    
-                    int id = Convert.ToInt32(reader["campground_id"]);
-                    string name = Convert.ToString(reader["name"]);
-                    int openFromMonth = Convert.ToInt32(reader["open_from_mm"]);
-                    int openToMonth = Convert.ToInt32(reader["open_to_mm"]);
-                    decimal dailyFee = Convert.ToDecimal(reader["daily_fee"]);
+                    // open connection
+                    conn.Open();
 
-                    Campground campground = new Campground(id, name, openFromMonth, openToMonth, dailyFee);
+                    // create my command object
+                    SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
 
-                    result.Add(id, campground);
+                    cmd.Parameters.AddWithValue("@parkId", parkId);
+
+                    // execute command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // if applicable loop through result set
+                    while (reader.Read())
+                    {
+                        // populate object(s) to return
+
+                        int id = Convert.ToInt32(reader["campground_id"]);
+                        string name = Convert.ToString(reader["name"]);
+                        int openFromMonth = Convert.ToInt32(reader["open_from_mm"]);
+                        int openToMonth = Convert.ToInt32(reader["open_to_mm"]);
+                        decimal dailyFee = Convert.ToDecimal(reader["daily_fee"]);
+
+                        Campground campground = new Campground(id, name, openFromMonth, openToMonth, dailyFee);
+
+                        result.Add(id, campground);
+                    }
+                    return result;
                 }
-                return result;
+            }
+            catch
+            {
+                throw;
             }
 
+
         }/// <summary>
-        
-            /// Find the available sites in a given campground between two dates
+
+        /// Find the available sites in a given campground between two dates
         /// </summary>
         /// <param name="campgroundId"></param> The campground Id to look for available sites
         /// <param name="fromDate"></param>The date from which to look for available sites
@@ -132,44 +145,50 @@ namespace Capstone.DAL
 	                                    JOIN campground ON site.campground_id = campground.campground_id
 	                                    WHERE (campground.open_from_mm <= @fromDateMonth AND campground.open_to_mm >= @toDateMonth)
                                     );";
-
-            // create my connection object
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            try
             {
-                // open connection
-                conn.Open();
-
-                // create my command object
-                SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
-
-                cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
-                cmd.Parameters.AddWithValue("@fromDate", fromDate);
-                cmd.Parameters.AddWithValue("@toDate", toDate);
-                cmd.Parameters.AddWithValue("@fromDateMonth", toDate.Month);
-                cmd.Parameters.AddWithValue("@toDateMonth", toDate.Month);
-
-
-                // execute command
-                SqlDataReader reader = cmd.ExecuteReader();
-                
-
-                // if applicable loop through result set
-                while (reader.Read())
+                // create my connection object
+                using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
-                    // populate object(s) to return
-                    int id = Convert.ToInt32(reader["site_id"]);
-                    int siteCampgroundId = Convert.ToInt32(reader["campground_id"]);
-                    int siteNum = Convert.ToInt32(reader["site_number"]);
-                    int siteOccupancy = Convert.ToInt32(reader["max_occupancy"]);
-                    int accessible = Convert.ToInt32(reader["accessible"]);
-                    int maxRvLength = Convert.ToInt32(reader["max_rv_length"]);
-                    int utilities = Convert.ToInt32(reader["utilities"]);
+                    // open connection
+                    conn.Open();
 
-                    Site site = new Site(id, siteCampgroundId, siteNum, siteOccupancy, accessible, maxRvLength, utilities);
+                    // create my command object
+                    SqlCommand cmd = new SqlCommand(sqlGetParks, conn);
 
-                    results.Add(siteNum, site);
+                    cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
+                    cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                    cmd.Parameters.AddWithValue("@toDate", toDate);
+                    cmd.Parameters.AddWithValue("@fromDateMonth", toDate.Month);
+                    cmd.Parameters.AddWithValue("@toDateMonth", toDate.Month);
+
+
+                    // execute command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                    // if applicable loop through result set
+                    while (reader.Read())
+                    {
+                        // populate object(s) to return
+                        int id = Convert.ToInt32(reader["site_id"]);
+                        int siteCampgroundId = Convert.ToInt32(reader["campground_id"]);
+                        int siteNum = Convert.ToInt32(reader["site_number"]);
+                        int siteOccupancy = Convert.ToInt32(reader["max_occupancy"]);
+                        int accessible = Convert.ToInt32(reader["accessible"]);
+                        int maxRvLength = Convert.ToInt32(reader["max_rv_length"]);
+                        int utilities = Convert.ToInt32(reader["utilities"]);
+
+                        Site site = new Site(id, siteCampgroundId, siteNum, siteOccupancy, accessible, maxRvLength, utilities);
+
+                        results.Add(siteNum, site);
+                    }
+                    return results;
                 }
-                return results;
+            }
+            catch
+            {
+                throw;
             }
         }
 
@@ -187,24 +206,32 @@ namespace Capstone.DAL
 
             string SqlAddReservation = @"INSERT INTO reservation(site_id, name, from_date, to_date)
                                        VALUES(@siteId, @reservationName, @fromDate, @toDate);";
-
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            try
             {
-                // open connection
-                conn.Open();
 
-                // create my command object
-                SqlCommand cmd = new SqlCommand(SqlAddReservation + _getLastIdSQL, conn);
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    // open connection
+                    conn.Open();
 
-                cmd.Parameters.AddWithValue("@siteId", siteId);
-                cmd.Parameters.AddWithValue("@reservationName", reservationName);
-                cmd.Parameters.AddWithValue("@fromDate", fromDate);
-                cmd.Parameters.AddWithValue("@toDate", toDate);
+                    // create my command object
+                    SqlCommand cmd = new SqlCommand(SqlAddReservation + _getLastIdSQL, conn);
 
-                // execute command
-                result = (int)cmd.ExecuteScalar();
+                    cmd.Parameters.AddWithValue("@siteId", siteId);
+                    cmd.Parameters.AddWithValue("@reservationName", reservationName);
+                    cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                    cmd.Parameters.AddWithValue("@toDate", toDate);
 
-                return result;
+                    // execute command
+                    result = (int)cmd.ExecuteScalar();
+
+                    return result;
+                }
+
+            }
+            catch
+            {
+                throw;
             }
         }
     }

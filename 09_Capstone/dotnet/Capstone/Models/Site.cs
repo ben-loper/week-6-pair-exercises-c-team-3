@@ -7,14 +7,14 @@ namespace Capstone.Models
     /// <summary>
     /// The site class stores the information about the camp site
     /// </summary>
-    public class Site
+    public class Site : BaseItem
     {
         public int Id { get; }                 //The site Id
         public int CampgroundId { get; }       //The campground Id
         public int SiteNum { get; }            //The site number
         public int SiteOccupancy { get; }      //The maximum occupancy of the site
         public int Accessible { get; }         //Is the site accessible
-        public string DisplayAccessible             //A derived variable to display the accessible string message
+        public string DisplayAccessible        //A derived variable to display the accessible string message
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Capstone.Models
             }
         }
         public int MaxRVLength { get; }        //The maximum RV length
-        public string DisplayMaxRVLength            //A derived variable to display the maximum RV length message
+        public string DisplayMaxRVLength       //A derived variable to display the maximum RV length message
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Capstone.Models
             }
         }
         public int Utilities { get; }          //Does the site have utilities
-        public string DisplayUtilities              //A derived variable to display the string message if the site has utilities
+        public string DisplayUtilities         //A derived variable to display the string message if the site has utilities
         {
             get
             {
@@ -54,9 +54,9 @@ namespace Capstone.Models
             }
         }
 
-        public Site(int id, int campgroundId, int siteNum, int siteOccupancy, int accessible, int maxRvLength, int utilities)
+        public Site(int id, int campgroundId, int siteNum, int siteOccupancy, int accessible, int maxRvLength, int utilities): base(id)
         {
-            Id = id;
+         
             CampgroundId = campgroundId;
             SiteNum = siteNum;
             SiteOccupancy = siteOccupancy;
