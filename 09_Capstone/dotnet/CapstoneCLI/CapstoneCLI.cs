@@ -211,7 +211,7 @@ namespace Capstone
                     string departureDateString = Console.ReadLine();
                     DateTime departureDate = Convert.ToDateTime(departureDateString);
                     
-                    if(arrivalDate < departureDate)
+                    if(arrivalDate > departureDate)
                     {
                         throw new Exception();
                     } 
@@ -223,6 +223,15 @@ namespace Capstone
                     else
                     {
                         Dictionary<int, Site> sites = _db.FindAvailableSites(userCampgroundChoice, arrivalDate, departureDate);
+
+                        if(sites.Count == 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("No sites are avaible for the given dates");
+                            Console.WriteLine("Press any key to return to the previous screen...");
+                            Console.ReadKey();
+                            break;
+                        }
 
                         Console.WriteLine("Results Matching Your Search Criteria");
                         Console.WriteLine("Site No.".PadRight(10) + "Max Occup.".PadRight(12) + "Accessible?".PadRight(12) + "Max RV Length".PadRight(15) + "Utility".PadRight(10) + "Cost");
