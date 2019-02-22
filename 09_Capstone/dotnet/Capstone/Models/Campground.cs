@@ -9,11 +9,11 @@ namespace Capstone.Models
     /// </summary>
     public class Campground
     {
-        public int Id { get; set; }                 // The campground Id
-        public string Name { get; set; }            // The campground name
-        public int OpenFromMonth { get; set; }      // The  month the campground opens
-        public int OpenToMonth { get; set; }        // The month the campground closes
-        public decimal DailyFee { get; set; }       // The daily fee for campground usage
+        public int Id { get; }                 // The campground Id
+        public string Name { get; }            // The campground name
+        public int OpenFromMonth { get; }      // The  month the campground opens
+        public int OpenToMonth { get; }        // The month the campground closes
+        public decimal DailyFee { get; }       // The daily fee for campground usage
 
         private Dictionary<int, string> _months = new Dictionary<int, string>() {
                     { 1, "January" },
@@ -48,6 +48,15 @@ namespace Capstone.Models
 
                 return result;
             }
+        }
+
+        public Campground(int id, string name, int openFromMonth, int openToMonth, decimal dailyFee)
+        {
+            Id = id;
+            Name = name;
+            OpenFromMonth = openFromMonth;
+            OpenToMonth = openToMonth;
+            DailyFee = dailyFee;
         }
     }
 }

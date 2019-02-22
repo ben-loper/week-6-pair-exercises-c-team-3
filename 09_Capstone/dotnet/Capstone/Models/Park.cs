@@ -9,12 +9,23 @@ namespace Capstone.Models
     /// </summary>
     public class Park
     {
-        public int Id { get; set; }                         // The park Id
-        public string Name { get; set; }                    // The park name
-        public string Location { get; set; }                // The park location
-        public DateTime EstablishDate { get; set; }         // The date the park was established
-        public int Area { get; set; }                       // The area of the park in square kilometers
-        public int AnnualVisitors { get; set; }             // The number of annual visitors
-        public string Description { get; set; }             // The description of the park
+        public int Id { get; }                         // The park Id
+        public string Name { get; }                    // The park name
+        public string Location { get; }                // The park location
+        public DateTime EstablishDate { get; }         // The date the park was established
+        public int Area { get; }                       // The area of the park in square kilometers
+        public int AnnualVisitors { get; }             // The number of annual visitors
+        public string Description { get; }             // The description of the park
+
+        public Park(int id, string name, string location, DateTime establishDate, int area, int annualVisitors, string description)
+        {
+            Id = id;
+            Name = name;
+            Location = location;
+            EstablishDate = establishDate;
+            Area = area;
+            AnnualVisitors = annualVisitors;
+            Description = description;
+        }
     }
 }
