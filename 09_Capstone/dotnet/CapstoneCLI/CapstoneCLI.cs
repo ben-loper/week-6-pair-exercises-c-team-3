@@ -23,6 +23,19 @@ namespace Capstone
 
             _parks = _db.GetParks();
 
+            if(_parks.Count == 0)
+            {
+                Console.Clear();
+
+                Console.WriteLine("Unexpected error when reading parks from database");
+
+                Console.WriteLine("Application will now close...");
+
+                Console.ReadKey();
+
+                quit = true;
+            }
+
             while (!quit)
             {
                 Console.Clear();
@@ -84,7 +97,7 @@ namespace Capstone
                 Console.WriteLine(_parks[id].Description + "\n");
                 Console.WriteLine("1) View Campgrounds");
                // Console.WriteLine("2) Search for Reservation");
-                Console.WriteLine("3) Return to Previous Screen");
+                Console.WriteLine("2) Return to Previous Screen");
 
 
                 string userChoice = Console.ReadLine();
@@ -95,13 +108,9 @@ namespace Capstone
                     int choice = int.Parse(userChoice);
                     if (choice == 1)
                     {
-                        ViewCampground(_parks[id].Id);
+                        ViewCampground(id);
                     }
                     else if (choice == 2)
-                    {
-                        ;
-                    }
-                    else if (choice == 3)
                     {
                         quit = true;
                     }
@@ -128,6 +137,15 @@ namespace Capstone
             campgrounds = _db.GetCampgroundByPark(parkId);
 
             bool quit = false;
+
+            if(campgrounds.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine($"No campgrounds exist for {_parks[parkId].Name}");
+                Console.WriteLine("Press any key to return to previous screen...");
+                Console.ReadKey();
+                quit = true;
+            }
 
             while (!quit)
             {
@@ -183,16 +201,16 @@ namespace Capstone
                     //Need to add verification
                     Console.WriteLine("\nWhich campground (enter 0 to cancel)?");
                     string userCampgroundChoiceString = Console.ReadLine();
-                    
+                    int userCampgroundChoice = int.Parse(userCampgroundChoiceString);
+
                     Console.WriteLine("What is the arrival date? (MM/DD/YYYY)");
                     string arrivalDateString = Console.ReadLine();
-                
+                    DateTime arrivalDate = Convert.ToDateTime(arrivalDateString);
+
                     Console.WriteLine("What is the departure date? (MM/DD/YYYY)");
                     string departureDateString = Console.ReadLine();
-
-                    DateTime arrivalDate = Convert.ToDateTime(arrivalDateString);
                     DateTime departureDate = Convert.ToDateTime(departureDateString);
-                    int userCampgroundChoice = int.Parse(userCampgroundChoiceString);
+                    
                     
                     if (userCampgroundChoice == 0)
                     {
@@ -251,8 +269,9 @@ namespace Capstone
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
                     Console.WriteLine("Something went wrong!");
                     Console.ReadKey();
                 }
