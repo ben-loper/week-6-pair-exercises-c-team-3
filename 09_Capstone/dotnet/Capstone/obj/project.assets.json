@@ -1450,23 +1450,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bloper\\.nuget\\packages\\": {},
+    "C:\\Users\\tulloa\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\Capstone.csproj",
+      "projectUniqueName": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\Capstone.csproj",
       "projectName": "Capstone",
-      "projectPath": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\Capstone.csproj",
-      "packagesPath": "C:\\Users\\bloper\\.nuget\\packages\\",
-      "outputPath": "C:\\workspace\\team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\obj\\",
+      "projectPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\Capstone.csproj",
+      "packagesPath": "C:\\Users\\tulloa\\.nuget\\packages\\",
+      "outputPath": "C:\\workspace\\Team\\week-6-pair-exercises-c-team-3\\09_Capstone\\dotnet\\Capstone\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\bloper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tulloa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
