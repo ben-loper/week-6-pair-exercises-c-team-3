@@ -211,7 +211,11 @@ namespace Capstone
                     string departureDateString = Console.ReadLine();
                     DateTime departureDate = Convert.ToDateTime(departureDateString);
                     
-                    
+                    if(arrivalDate < departureDate)
+                    {
+                        throw new Exception();
+                    } 
+
                     if (userCampgroundChoice == 0)
                     {
                         quit = true;
