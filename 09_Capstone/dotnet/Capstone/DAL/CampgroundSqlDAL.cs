@@ -120,12 +120,19 @@ namespace Capstone.DAL
                                     FROM site
                                     WHERE site.campground_id = @campgroundId AND site.site_id NOT IN
                                     (
-                                    SELECT site.site_id
-                                    FROM site
-                                    JOIN reservation ON site.site_id = reservation.site_id
-                                    WHERE (reservation.from_date BETWEEN @fromDate AND @toDate) OR
-                                    (reservation.to_date BETWEEN @fromDate AND @toDate)
+	                                    SELECT site.site_id
+	                                    FROM site
+	                                    JOIN reservation ON site.site_id = reservation.site_id
+	                                    WHERE (reservation.from_date BETWEEN @fromDate AND @toDate) OR
+	                                    (reservation.to_date BETWEEN @fromDate AND @toDate)
+                                    )
+                                    AND site.site_id IN (
+	                                    SELECT site_id
+	                                    FROM site
+	                                    JOIN campground ON site.campground_id = campground.campground_id
+	                                    WHERE (campground.open_from_mm <= @fromDateMonth AND campground.open_to_mm >= @toDateMonth)
                                     );";
+
             // create my connection object
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -138,6 +145,9 @@ namespace Capstone.DAL
                 cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
                 cmd.Parameters.AddWithValue("@fromDate", fromDate);
                 cmd.Parameters.AddWithValue("@toDate", toDate);
+                cmd.Parameters.AddWithValue("@fromDateMonth", toDate.Month);
+                cmd.Parameters.AddWithValue("@toDateMonth", toDate.Month);
+
 
                 // execute command
                 SqlDataReader reader = cmd.ExecuteReader();
