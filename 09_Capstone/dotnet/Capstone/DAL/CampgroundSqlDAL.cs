@@ -16,6 +16,10 @@ namespace Capstone.DAL
             _connectionString = connectionString;
         }
 
+        /// <summary>
+        /// Get the parks and park information from the database
+        /// </summary>
+        /// <returns></returns> Returns a dictionary of the parks and park information
         public Dictionary<int, Park> GetParks()
         {
             Dictionary<int, Park> result = new Dictionary<int, Park>();
@@ -54,6 +58,12 @@ namespace Capstone.DAL
             }
 
         }
+        
+        /// <summary>
+        /// Get the campgrounds and campground information in a given park from the database
+        /// </summary>
+        /// <param name="parkId"></param>The Id of the park to get the campgounds from
+        /// <returns></returns> Returns a dictionary of the campgrounds in given park and the campground information
         public Dictionary<int, Campground> GetCampgroundByPark(int parkId)
         {
             Dictionary<int, Campground> result = new Dictionary<int, Campground>();
@@ -90,7 +100,14 @@ namespace Capstone.DAL
                 return result;
             }
 
-        }
+        }/// <summary>
+        
+            /// Find the available sites in a given campground between two dates
+        /// </summary>
+        /// <param name="campgroundId"></param> The campground Id to look for available sites
+        /// <param name="fromDate"></param>The date from which to look for available sites
+        /// <param name="toDate"></param>The date which to look for available sites
+        /// <returns></returns> Returns a dictionary of available sites and their information
         public Dictionary<int, Site> FindAvailableSites(int campgroundId, DateTime fromDate, DateTime toDate)
         {
 
@@ -143,6 +160,14 @@ namespace Capstone.DAL
             }
         }
 
+        /// <summary>
+        /// Add a reservation for a campsite
+        /// </summary>
+        /// <param name="siteId"></param> The site Id to add the reservation.
+        /// <param name="reservationName"></param> The name of the person reserving the campsite.
+        /// <param name="fromDate"></param> The date from which the reservation starts
+        /// <param name="toDate"></param>The date to which the reservation ends
+        /// <returns></returns> Returns the reservation Id
         public int AddReservation(int siteId, string reservationName, DateTime fromDate, DateTime toDate)
         {
             int result = 0;
