@@ -221,18 +221,19 @@ namespace Capstone
 
                         try
                         {
-                            int siteId = int.Parse(userChoice);
+                            int siteNum = int.Parse(userChoice);
 
-                            if (sites.ContainsKey(siteId))
+                            if (sites.ContainsKey(siteNum))
                             {
                                 Console.WriteLine("What name should the reservation be made under?");
                                 string reservationName = Console.ReadLine();
-                                int reservationNumber = _db.AddReservation(siteId, reservationName, arrivalDate, departureDate);
+                                int reservationNumber = _db.AddReservation(sites[siteNum].Id, reservationName, arrivalDate, departureDate);
                                 Console.WriteLine($"\nThe reservation has been made and the confirmation id is {reservationNumber}");
+                                Console.WriteLine($"\nPress any key to return to the campgrounds screen...");
                                 Console.ReadKey();
                                 quit = true;
                             }
-                            else if (siteId == 0)
+                            else if (siteNum == 0)
                             {
                                 quit = true;
                             }
@@ -248,7 +249,6 @@ namespace Capstone
                             Console.Write("Press any key to return to the campgrounds screen...");
                             Console.ReadKey();
                         }
-                        Console.ReadKey();
                     }
                 }
                 catch

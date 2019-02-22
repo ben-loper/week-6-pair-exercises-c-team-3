@@ -42,16 +42,17 @@ namespace Capstone.DAL
                 while (reader.Read())
                 {
                     // populate object(s) to return
-                    Park p = new Park();
-                    p.Id = Convert.ToInt32(reader["park_id"]);
-                    p.Name = Convert.ToString(reader["name"]);
-                    p.Location = Convert.ToString(reader["location"]);
-                    p.EstablishDate = Convert.ToDateTime(reader["establish_date"]);
-                    p.Area = Convert.ToInt32(reader["area"]);
-                    p.AnnualVisitors = Convert.ToInt32(reader["visitors"]);
-                    p.Description = Convert.ToString(reader["description"]);
+                    int parkId = Convert.ToInt32(reader["park_id"]);
+                    string name = Convert.ToString(reader["name"]);
+                    string location = Convert.ToString(reader["location"]);
+                    DateTime establishDate = Convert.ToDateTime(reader["establish_date"]);
+                    int area = Convert.ToInt32(reader["area"]);
+                    int annualVisitors = Convert.ToInt32(reader["visitors"]);
+                    string descripton = Convert.ToString(reader["description"]);
 
-                    result.Add(p.Id, p);
+                    Park park = new Park(parkId, name, location, establishDate, area, annualVisitors, descripton);
+
+                    result.Add(parkId, park);
                 }
                 return result;
 
@@ -68,8 +69,8 @@ namespace Capstone.DAL
         {
             Dictionary<int, Campground> result = new Dictionary<int, Campground>();
             string sqlGetParks = @"SELECT * FROM campground
-                                   WHERE campground.park_id = @parkId
-                                   ORDER BY campground.name;";
+                                   WHERE campground.park_id = @parkId;";
+
             // create my connection object
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -88,14 +89,16 @@ namespace Capstone.DAL
                 while (reader.Read())
                 {
                     // populate object(s) to return
-                    Campground c = new Campground();
-                    c.Id = Convert.ToInt32(reader["campground_id"]);
-                    c.Name = Convert.ToString(reader["name"]);
-                    c.OpenFromMonth = Convert.ToInt32(reader["open_from_mm"]);
-                    c.OpenToMonth = Convert.ToInt32(reader["open_to_mm"]);
-                    c.DailyFee = Convert.ToDecimal(reader["daily_fee"]);
+                    
+                    int id = Convert.ToInt32(reader["campground_id"]);
+                    string name = Convert.ToString(reader["name"]);
+                    int openFromMonth = Convert.ToInt32(reader["open_from_mm"]);
+                    int openToMonth = Convert.ToInt32(reader["open_to_mm"]);
+                    decimal dailyFee = Convert.ToDecimal(reader["daily_fee"]);
 
-                    result.Add(c.Id, c);
+                    Campground campground = new Campground(id, name, openFromMonth, openToMonth, dailyFee);
+
+                    result.Add(id, campground);
                 }
                 return result;
             }
@@ -144,17 +147,17 @@ namespace Capstone.DAL
                 while (reader.Read())
                 {
                     // populate object(s) to return
-                    Site s = new Site();
-                    s.Id = Convert.ToInt32(reader["site_id"]);
-                    s.CampgroundId = Convert.ToInt32(reader["campground_id"]);
-                    s.SiteNum = Convert.ToInt32(reader["site_number"]);
-                    s.SiteOccupancy = Convert.ToInt32(reader["max_occupancy"]);
-                    s.Accessible = Convert.ToInt32(reader["accessible"]);
-                    s.MaxRVLength = Convert.ToInt32(reader["max_rv_length"]);
-                    s.Utilities = Convert.ToInt32(reader["utilities"]);
+                    int id = Convert.ToInt32(reader["site_id"]);
+                    int siteCampgroundId = Convert.ToInt32(reader["campground_id"]);
+                    int siteNum = Convert.ToInt32(reader["site_number"]);
+                    int siteOccupancy = Convert.ToInt32(reader["max_occupancy"]);
+                    int accessible = Convert.ToInt32(reader["accessible"]);
+                    int maxRvLength = Convert.ToInt32(reader["max_rv_length"]);
+                    int utilities = Convert.ToInt32(reader["utilities"]);
 
+                    Site site = new Site(id, siteCampgroundId, siteNum, siteOccupancy, accessible, maxRvLength, utilities);
 
-                    results.Add(s.Id, s);
+                    results.Add(siteNum, site);
                 }
                 return results;
             }
